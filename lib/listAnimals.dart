@@ -5,6 +5,8 @@ import 'detailedView.dart';
 
 // Pantalla list animals
 class ListAnimals extends StatefulWidget {
+  const ListAnimals({super.key});
+
   @override
   _ListAnimalsState createState() => _ListAnimalsState();
 }
@@ -45,7 +47,7 @@ class _ListAnimalsState extends State<ListAnimals> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Animals'),
+        title: const Text('List Animals'),
       ),
       body: SingleChildScrollView( // Controla el resize dels elements child
         child: Column(
@@ -65,11 +67,11 @@ class _ListAnimalsState extends State<ListAnimals> {
                   // Icono buscador i text inicial
                   child: Row(
                     children: [
-                      Icon(Icons.search, color: Colors.white),
-                      SizedBox(width: 6.0),
+                      const Icon(Icons.search, color: Colors.white),
+                      const SizedBox(width: 6.0),
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: 'Enter search name',
                             hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
@@ -109,7 +111,7 @@ class _ListAnimalsState extends State<ListAnimals> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20), // Espai entre text i imatge
+                    const SizedBox(height: 20), // Espai entre text i imatge
                     Image.asset(
                       'lib/assets/animalspotter.png',
                       width: 300,
@@ -125,7 +127,7 @@ class _ListAnimalsState extends State<ListAnimals> {
               ListView.builder(
                 // Propietats listView en SingleChildScrollView, ajusten el contingut
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 // Elements de la ListView
                 itemCount: animalData.length,
                 // Widget amb la informacio de l'animal buscat a la API
@@ -175,7 +177,7 @@ class _ListAnimalsState extends State<ListAnimals> {
                         ),
                         subtitle:  Text(
                           animal['taxonomy']['scientific_name'] ?? 'Not available',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black54,
                           ),
                         ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class detailedView extends StatelessWidget {
   final Map<String, dynamic> animal; // Animal seleccionat
 
-  detailedView({required this.animal});
+  const detailedView({super.key, required this.animal});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class detailedView extends StatelessWidget {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            SizedBox(height: 20.0), // Espai entre nom cientific i filera d'informacio
+            const SizedBox(height: 20.0), // Espai entre nom cientific i filera d'informacio
             // Mostrar en filera dos cuadrats d'informacio (taxonomy i characteristics)
             Row(
               // Aliniar amb distacies iguals
@@ -56,7 +56,7 @@ class detailedView extends StatelessWidget {
                 ]),
               ],
             ),
-            SizedBox(height: 20.0), // Espai entre fileres
+            const SizedBox(height: 20.0), // Espai entre fileres
             // Mostrar en filera dos cuadrats d'informacio (physiscal characteristics i distinctive feature)
             Row(
               // Aliniar amb distacies iguals
@@ -75,7 +75,7 @@ class detailedView extends StatelessWidget {
                 ]),
               ],
             ),
-            SizedBox(height: 24.0),// Espai entre cuadrats d'informacio y slogan
+            const SizedBox(height: 24.0),// Espai entre cuadrats d'informacio y slogan
             // Rectangle slogan
             Container(
               width: 340.0,
@@ -88,8 +88,8 @@ class detailedView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 8.0),
-                  Text(
+                  const SizedBox(width: 8.0),
+                  const Text(
                     'Slogan:  ',
                     style: TextStyle(
                       color: Colors.white,
@@ -100,7 +100,7 @@ class detailedView extends StatelessWidget {
                   Text(
                     '${animal['characteristics']['slogan'] ??
                         'not available'}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
@@ -110,7 +110,7 @@ class detailedView extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 24.0), // Espai entre slogan i boto per afegir foto
+            const SizedBox(height: 24.0), // Espai entre slogan i boto per afegir foto
             GestureDetector(
               onTap: () {
               },
@@ -122,9 +122,9 @@ class detailedView extends StatelessWidget {
                   color: Colors.blue[100], // Color de ejemplo
                   borderRadius: BorderRadius.circular(20.0),
                 ),
-                padding: EdgeInsets.all(12.0), // Marges
+                padding: const EdgeInsets.all(12.0), // Marges
                 // Text i icona "add photo"
-                child: Row(
+                child: const Row(
                   // Aliniar al centre del contenidor
                   mainAxisAlignment: MainAxisAlignment.center,
                   // Mostrar text i icona
@@ -148,7 +148,7 @@ class detailedView extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 24.0), // Espai entre add photo i add favorites
+            const SizedBox(height: 24.0), // Espai entre add photo i add favorites
             // Boto per afegir l'animal a favorits
             Align(
               // Aliniar el contingut al centre
@@ -159,26 +159,26 @@ class detailedView extends StatelessWidget {
                   // Acción al agregar a favoritos
                 },
                 // Mostrar Icona i text
-                icon: Icon(
+                icon: const Icon(
                   Icons.star,
                   color: Colors.black, // Cambiar el color del icono a negro
                   size: 36.0, // Cambiar el tamaño del icono
                 ),
-                label: Text(
+                label: const Text(
                   'Add to Favorites',
                   style: TextStyle(color: Colors.black),
                 ),
                 // Modificar contenidor boto, afegir color i costats rodons
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.yellow[100], // Color amarillo claro
+                  backgroundColor: Colors.yellow[100], // Color amarillo claro
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40.0), // Ajustar el radio del borde
                   ),
-                  minimumSize: Size(200.0, 60.0), // Ajustar el tamaño del botón
+                  minimumSize: const Size(200.0, 60.0), // Ajustar el tamaño del botón
                 ),
               ),
             ),
-            SizedBox(height: 24.0),// Marge final pagina
+            const SizedBox(height: 24.0),// Marge final pagina
           ],
         ),
       ),
@@ -195,7 +195,7 @@ class detailedView extends StatelessWidget {
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(12.0),
       ),
-      padding: EdgeInsets.all(12.0), // Marges
+      padding: const EdgeInsets.all(12.0), // Marges
       // Format del text
       child: Column(
         // Aliniar al inici el text
@@ -204,12 +204,12 @@ class detailedView extends StatelessWidget {
         children: [
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8.0), // Espai entre titol i contingut
+          const SizedBox(height: 8.0), // Espai entre titol i contingut
           // Mostrar contingut
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,7 +218,7 @@ class detailedView extends StatelessWidget {
                 .map((characteristic) =>
                 Text(
                   characteristic,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14.0,
                     color: Colors.black87,
                   ),
