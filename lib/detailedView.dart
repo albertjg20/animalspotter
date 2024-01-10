@@ -2,177 +2,192 @@ import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
 
 class detailedView extends StatelessWidget {
-  final Map<String, dynamic> animal;
+  final Map<String, dynamic> animal; // Animal seleccionat
 
   detailedView({required this.animal});
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(animal['name'] ?? 'Name not available'),
+        title: Text(animal['name'] ?? 'Name not available'),// Titol pantalla
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "\"${animal['taxonomy']['scientific_name'] ??
-                    'Name not available'}\"",
-                style: TextStyle(
-                  color: Colors.blue[900],
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.w800,
-                  fontStyle: FontStyle.italic,
-                ),
+      body: SingleChildScrollView( // Controla el resize dels elements child
+        // Elements en ordre columna
+        child: Column(
+          // Aliniar el nom cientific al centre
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // Mostrar nom cientific animal
+          children: [
+            Text(
+              "\"${animal['taxonomy']['scientific_name'] ??
+                  'Name not available'}\"",
+              style: TextStyle(
+                color: Colors.blue[900],
+                fontSize: 30.0,
+                fontWeight: FontWeight.w800,
+                fontStyle: FontStyle.italic,
               ),
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildSquare('Taxonomy', [
-                    'Class: ${animal['taxonomy']['class'] ??
-                        'class not available'}',
-                    'Order: ${animal['taxonomy']['order'] ??
-                        'order not available'}',
-                    'Family: ${animal['taxonomy']['family'] ??
-                        'family not available'}',
-                  ]),
-                  _buildSquare('Characteristics', [
-                    'Young name: ${animal['characteristics']['name_of_young'] ??
-                        'name not available'}',
-                    'Population: ${animal['characteristics']['estimated_population_size'] ??
-                        'Population not available'}',
-                    'Gestation period: ${animal['characteristics']['gestation_period'] ??
-                        'gestation not available'}',
-                    'Lifespan: ${animal['characteristics']['lifespan'] ??
-                        'lifespan not available'}',
-                  ]),
-                ],
+            ),
+            SizedBox(height: 20.0), // Espai entre nom cientific i filera d'informacio
+            // Mostrar en filera dos cuadrats d'informacio (taxonomy i characteristics)
+            Row(
+              // Aliniar amb distacies iguals
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // Mostrar informacio en cuadrats grisos
+              children: [
+                grayBox('Taxonomy', [
+                  'Class: ${animal['taxonomy']['class'] ??
+                      'class not available'}',
+                  'Order: ${animal['taxonomy']['order'] ??
+                      'order not available'}',
+                  'Family: ${animal['taxonomy']['family'] ??
+                      'family not available'}',
+                ]),
+                grayBox('Characteristics', [
+                  'Young name: ${animal['characteristics']['name_of_young'] ??
+                      'name not available'}',
+                  'Population: ${animal['characteristics']['estimated_population_size'] ??
+                      'Population not available'}',
+                  'Gestation period: ${animal['characteristics']['gestation_period'] ??
+                      'gestation not available'}',
+                  'Lifespan: ${animal['characteristics']['lifespan'] ??
+                      'lifespan not available'}',
+                ]),
+              ],
+            ),
+            SizedBox(height: 20.0), // Espai entre fileres
+            // Mostrar en filera dos cuadrats d'informacio (physiscal characteristics i distinctive feature)
+            Row(
+              // Aliniar amb distacies iguals
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // Mostrar informacio en cuadrats grisos
+              children: [
+                grayBox('Physical Characteristics', [
+                  'Weight: ${animal['characteristics']['weight'] ??
+                      'weight not available'}',
+                  'Length: ${animal['characteristics']['length'] ??
+                      'length not available'}',
+                ]),
+                grayBox('Most distinctive feature', [
+                  '${animal['characteristics']['most_distinctive_feature'] ??
+                      'not available'}',
+                ]),
+              ],
+            ),
+            SizedBox(height: 24.0),// Espai entre cuadrats d'informacio y slogan
+            // Rectangle slogan
+            Container(
+              width: 340.0,
+              height: 80.0,
+              decoration: BoxDecoration(
+                color: Colors.blue[900], // Color de ejemplo
+                borderRadius: BorderRadius.circular(20.0),
               ),
-
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // Text slogan
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildSquare('Physical Characteristics', [
-                    'Weight: ${animal['characteristics']['weight'] ??
-                        'weight not available'}',
-                    'Length: ${animal['characteristics']['length'] ??
-                        'length not available'}',
-                  ]),
-                  _buildSquare('Most distinctive feature', [
-                    '${animal['characteristics']['most_distinctive_feature'] ??
+                  SizedBox(width: 8.0),
+                  Text(
+                    'Slogan:  ',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  Text(
+                    '${animal['characteristics']['slogan'] ??
                         'not available'}',
-                  ]),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16.0,
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(height: 24.0),
-              Container(
+            ),
+
+            SizedBox(height: 24.0), // Espai entre slogan i boto per afegir foto
+            GestureDetector(
+              onTap: () {
+              },
+              // Contenidor del boto add photo
+              child: Container(
                 width: 340.0,
-                height: 80.0,
+                height: 100.0,
                 decoration: BoxDecoration(
-                  color: Colors.blue[900], // Color de ejemplo
+                  color: Colors.blue[100], // Color de ejemplo
                   borderRadius: BorderRadius.circular(20.0),
                 ),
+                padding: EdgeInsets.all(12.0), // Marges
+                // Text i icona "add photo"
                 child: Row(
+                  // Aliniar al centre del contenidor
                   mainAxisAlignment: MainAxisAlignment.center,
+                  // Mostrar text i icona
                   children: [
+                    Icon(
+                      Icons.camera_alt,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
                     SizedBox(width: 8.0),
                     Text(
-                      'Slogan:  ',
+                      'Add photo',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
-                      ),
-                    ),
-                    Text(
-                      '${animal['characteristics']['slogan'] ??
-                          'not available'}',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16.0,
                       ),
                     ),
                   ],
                 ),
               ),
+            ),
 
-              SizedBox(height: 24.0),
-              GestureDetector(
-                onTap: () {
+            SizedBox(height: 24.0), // Espai entre add photo i add favorites
+            // Boto per afegir l'animal a favorits
+            Align(
+              // Aliniar el contingut al centre
+              alignment: Alignment.center,
+              // Afegir a l'array de "favorites"
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  // Acción al agregar a favoritos
                 },
-                child: Container(
-                  width: 340.0,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[100], // Color de ejemplo
-                    borderRadius: BorderRadius.circular(20.0),
+                // Mostrar Icona i text
+                icon: Icon(
+                  Icons.star,
+                  color: Colors.black, // Cambiar el color del icono a negro
+                  size: 36.0, // Cambiar el tamaño del icono
+                ),
+                label: Text(
+                  'Add to Favorites',
+                  style: TextStyle(color: Colors.black),
+                ),
+                // Modificar contenidor boto, afegir color i costats rodons
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.yellow[100], // Color amarillo claro
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40.0), // Ajustar el radio del borde
                   ),
-                  padding: EdgeInsets.all(12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.camera_alt,
-                        color: Colors.black,
-                        size: 24.0,
-                      ),
-                      SizedBox(width: 8.0),
-                      Text(
-                        'Add photo',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ],
-                  ),
+                  minimumSize: Size(200.0, 60.0), // Ajustar el tamaño del botón
                 ),
               ),
-
-              SizedBox(height: 24.0),
-              Align(
-                alignment: Alignment.center,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    // Acción al agregar a favoritos
-                  },
-                  icon: Icon(
-                    Icons.star,
-                    color: Colors.black, // Cambiar el color del icono a negro
-                    size: 36.0, // Cambiar el tamaño del icono
-                  ),
-                  label: Text(
-                    'Add to Favorites',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow[100], // Color amarillo claro
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0), // Ajustar el radio del borde
-                    ),
-                    minimumSize: Size(200.0, 60.0), // Ajustar el tamaño del botón
-                  ),
-                ),
-              ),
-              SizedBox(height: 24.0),
-
-            ],
-          ),
+            ),
+            SizedBox(height: 24.0),// Marge final pagina
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildSquare(String text, List<String> characteristics) {
+  // Widget grayBox, caixes visuals d'informació
+  Widget grayBox(String text, List<String> characteristics) {
+    // Contenidor amb el format i el text
     return Container(
       width: 180.0,
       height: 200.0,
@@ -180,9 +195,12 @@ class detailedView extends StatelessWidget {
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(12.0),
       ),
-      padding: EdgeInsets.all(12.0),
+      padding: EdgeInsets.all(12.0), // Marges
+      // Format del text
       child: Column(
+        // Aliniar al inici el text
         crossAxisAlignment: CrossAxisAlignment.start,
+        // Mostrar titol en negreta
         children: [
           Text(
             text,
@@ -191,9 +209,11 @@ class detailedView extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 8.0), // Espai entre titol i contingut
+          // Mostrar contingut
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            // Mostrar cada element de characteristics
             children: characteristics
                 .map((characteristic) =>
                 Text(

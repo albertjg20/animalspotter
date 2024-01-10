@@ -179,8 +179,8 @@ class _ListAnimalsState extends State<ListAnimals> {
                             color: Colors.black54,
                           ),
                         ),
+                        // Navegacio a la detailedView de l'element pulsat de la llista
                         onTap: () {
-                          // Navegacio a la detailedView de l'element pulsat
                           Navigator.push(
                             context,
                             MaterialPageRoute(
