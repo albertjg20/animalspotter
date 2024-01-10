@@ -1,22 +1,38 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'dart:async'; // Debouncer
+import 'package:http/http.dart' as http; // Fetch api
 import 'dart:convert';
-import 'detailedView.dart';
+import 'detailedView.dart'; // Accedir a la vista detallada
 
 // Pantalla list animals
+// StatefulWidget: perque pugui anar canviant la vista (lllista)
 class ListAnimals extends StatefulWidget {
-  const ListAnimals({super.key});
+  const ListAnimals({super.key}); // Constructor per cridar al StateFulWidget
 
   @override
-  _ListAnimalsState createState() => _ListAnimalsState();
+  State<ListAnimals> createState() => ListAnimalsState(); // Creem instancia de la classe
 }
 
-class _ListAnimalsState extends State<ListAnimals> {
+// Implementacio del state per ListAnimals
+class ListAnimalsState extends State<ListAnimals> {
   List<dynamic> animalData = []; // List dinamica info api animals
   //String errorMessage = "";
-  // Peticio api  (fetch)
+  // Final: variables que no es poden modificar
+  final _debouncer = Debouncer(milliseconds: 400); // Per no fer la carga del searchValue al instant
+
+  // Obtenir informacio de la api
   Future<void> _fetchAnimalsData(String name) async {
     const String apiKey = 'lDB4laXCGfgMlvOQauOfpA==nNBrvyTJXNAx0Jch';
+
+    // Actualitzem informacio
+    if (name.isEmpty) {
+      setState(() {
+        animalData = [];
+      });
+      return;
+    }
 
     // Obtenir informacio de la api
     final response = await http.get(
@@ -28,6 +44,7 @@ class _ListAnimalsState extends State<ListAnimals> {
     if (response.statusCode == 200) {
       setState(() {
         animalData = json.decode(response.body);
+        print(animalData);
       });
     } else {
       // Controlar error busqueda
@@ -40,7 +57,6 @@ class _ListAnimalsState extends State<ListAnimals> {
         animalData = ['Not found'];
       });
     }
-
   }
 
   @override
@@ -79,13 +95,15 @@ class _ListAnimalsState extends State<ListAnimals> {
                           ),
                           // Petició a la API segons la busqueda
                           onChanged: (value) {
-                            if (value == '') {
-                              setState(() {
-                                animalData = [];
-                              });
-                            } else {
-                              _fetchAnimalsData(value);
-                            }
+                            _debouncer.run(() {
+                              if (value == '') {
+                                setState(() {
+                                  animalData = [];
+                                });
+                              } else {
+                                _fetchAnimalsData(value);
+                              }
+                            });
                           },
                         ),
                       ),
@@ -103,7 +121,7 @@ class _ListAnimalsState extends State<ListAnimals> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'WELCOME to AnimalsPotter, \n search your spotted animal!',
+                      'WELCOME to AnimalSpotter, \n search your spotted animal!',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
@@ -199,5 +217,17 @@ class _ListAnimalsState extends State<ListAnimals> {
         ),
       ),
     );
+  }
+}
+
+class Debouncer {
+  final int milliseconds;
+  Timer? _timer;
+  Debouncer({required this.milliseconds});
+  void run(VoidCallback action) {
+    if (_timer != null) {
+      _timer!.cancel();
+    }
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 }
