@@ -1,4 +1,48 @@
 import 'package:flutter/material.dart';
+import 'listAnimals.dart'; // Importa el archivo de la pantalla secundaria
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi App Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: mainView(), // Define tu pantalla principal aquí
+    );
+  }
+}
+
+class mainView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Main View'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navegar a la pantalla secundaria cuando se presiona el botón
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ListAnimals()),
+            );
+          },
+          child: Text('LIST ANIMALS'),
+        ),
+      ),
+    );
+  }
+}
+
+// BASE DEL PROJECTE INICIAL
+/*import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -122,4 +166,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
