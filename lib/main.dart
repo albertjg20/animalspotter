@@ -1,4 +1,50 @@
 import 'package:flutter/material.dart';
+import 'listAnimals.dart';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi App Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const mainView(),
+    );
+  }
+}
+
+class mainView extends StatelessWidget {
+  const mainView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Main View'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ListAnimals()),
+            );
+          },
+          child: const Text('LIST ANIMALS'),
+        ),
+      ),
+    );
+  }
+}
+
+// BASE DEL PROJECTE INICIAL
+/*import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +57,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demofffdfd nil commit in the branch',
+      title: 'Flutter Demo provaaa',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -122,4 +168,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
