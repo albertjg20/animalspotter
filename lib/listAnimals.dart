@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'dart:async'; // Debouncer
 import 'package:http/http.dart' as http; // Fetch api
@@ -20,7 +18,7 @@ class ListAnimalsState extends State<ListAnimals> {
   List<dynamic> animalData = []; // List dinamica info api animals
   //String errorMessage = "";
   // Final: variables que no es poden modificar
-  final _debouncer = Debouncer(milliseconds: 400); // Per no fer la carga del searchValue al instant
+  final debouncer = Debouncer(milliseconds: 400); // Per no fer la carga del searchValue al instant
 
   // Obtenir informacio de la api
   Future<void> _fetchAnimalsData(String name) async {
@@ -95,7 +93,7 @@ class ListAnimalsState extends State<ListAnimals> {
                           ),
                           // Petició a la API segons la busqueda
                           onChanged: (value) {
-                            _debouncer.run(() {
+                            debouncer.run(() {
                               if (value == '') {
                                 setState(() {
                                   animalData = [];
