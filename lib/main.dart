@@ -1,4 +1,81 @@
+// MAIN ADAPTAT A UNA BAR ITEMS
 import 'package:flutter/material.dart';
+import 'listAnimals.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi App Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MainView(),
+    );
+  }
+}
+
+class MainView extends StatefulWidget {
+  const MainView({super.key});
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        //title: const Text('Main View'),
+      ),
+      body: _getBody(_currentIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getBody(int index) {
+    switch (index) {
+      case 0:
+        return const ListAnimals();
+    // Afegir aqui la vosta de listFavorites()
+    // case 1:
+    //   return const listFavorites();
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+}
+
+
+
+
+/*import 'package:flutter/material.dart';
 import 'listAnimals.dart';
 void main() {
   runApp(const MyApp());
@@ -41,7 +118,7 @@ class mainView extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 // BASE DEL PROJECTE INICIAL
 /*import 'package:flutter/material.dart';
