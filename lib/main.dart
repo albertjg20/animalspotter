@@ -1,8 +1,25 @@
 // MAIN ADAPTAT A UNA BAR ITEMS
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'listAnimals.dart';
+import 'package:animalspotter/widget_tree.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyCReF2peuEpRjRqZ7Hm1mWI9mETb5ppGWI",
+      authDomain: "animalspotter-d0d71.firebaseapp.com",
+      projectId: "animalspotter-d0d71",
+      storageBucket: "animalspotter-d0d71.appspot.com",
+      messagingSenderId: "802845800577",
+      appId: "1:802845800577:android:7aede1b5c851f1fa80f580",
+      measurementId: "", // Si no hay una medida en el archivo, déjalo vacío o elimínalo.
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -16,7 +33,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainView(),
+      home: const WidgetTree(),
+      //home: const MainView(),
     );
   }
 }

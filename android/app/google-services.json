@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "802845800577",
+    "project_id": "animalspotter-d0d71",
+    "storage_bucket": "animalspotter-d0d71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802845800577:android:7aede1b5c851f1fa80f580",
+        "android_client_info": {
+          "package_name": "com.example.animalspotter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCReF2peuEpRjRqZ7Hm1mWI9mETb5ppGWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
