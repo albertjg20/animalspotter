@@ -64,6 +64,14 @@ flutter:
     - lib/assets/animalspotter.png
     # Asset imatge not Found
     - lib/assets/notFound.png
+    #asset Oso panda
+    - lib/assets/Oso_Panda.jpg
+    #asset Logo
+    - lib/assets/logoApp.png
+    - lib/assets/fondoPantalla.jpg
+    - lib/assets/titolApp.png
+
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
