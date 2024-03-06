@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
               Positioned(
                 top: 0, // Ajusta la posición vertical de la imagen
                 child: Image.asset(
-                  'lib/assets/titolApp.png',
+                  'lib/assets/LogoDefinitiu.png',
                   height: 100, // Ajusta el tamaño de la imagen
                   // También puedes agregar otras propiedades de estilo, como ancho, bordes, etc.
                 ),

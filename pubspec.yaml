@@ -70,7 +70,9 @@ flutter:
     - lib/assets/logoApp.png
     - lib/assets/fondoPantalla.jpg
     - lib/assets/titolApp.png
-
+    - lib/assets/LogoDefinitiu.png
+    - lib/assets/List-Animals-6-3-2024 (1).png
+    - lib/assets/favortiosStar.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

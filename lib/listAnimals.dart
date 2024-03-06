@@ -75,8 +75,39 @@ class ListAnimalsState extends State<ListAnimals> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: signOut, icon: Icon(Icons.logout))],
-        title: const Text('List Animals'),
+        actions: [
+          IconButton(
+            onPressed: signOut, // Asigna la función de logout al botón
+            icon: Icon(Icons.logout),
+          )
+        ],
+        title: Row(
+          children: [
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Image.asset(
+                  'lib/assets/List-Animals-6-3-2024 (1).png', // Ruta de la imagen
+                  width: 200, // Ancho de la imagen
+                  height: 200, // Alto de la imagen
+                  fit: BoxFit.contain, // Ajustar la imagen al tamaño del app bar
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                // Agrega la lógica que deseas ejecutar cuando se presiona el botón de favoritos
+                print('Botón de favoritos presionado');
+              },
+              icon: Image.asset(
+                'lib/assets/favortiosStar.png', // Ruta de la imagen
+                width: 40, // Ancho de la imagen
+                height: 40, // Alto de la imagen
+                fit: BoxFit.contain, // Ajustar la imagen al tamaño del botón
+              ),
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView( // Controla el resize dels elements child
         child: Column(
