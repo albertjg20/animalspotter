@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async'; // Debouncer
 import 'package:http/http.dart' as http; // Fetch api
 import 'dart:convert';
+import 'auth.dart';
 import 'detailedView.dart'; // Accedir a la vista detallada
 
 // Pantalla list animals
@@ -57,10 +58,24 @@ class ListAnimalsState extends State<ListAnimals> {
     }
   }
 
+  //Aqui poso el botó de SignOut amb el seu mètode. El coloquem al appBar
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
+  Widget _signOutButton() {
+    return ElevatedButton(
+      onPressed: signOut,
+      child: const Text('Sign Out'),
+    );
+    return const Text('Firebase Auth');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [IconButton(onPressed: signOut, icon: Icon(Icons.logout))],
         title: const Text('List Animals'),
       ),
       body: SingleChildScrollView( // Controla el resize dels elements child

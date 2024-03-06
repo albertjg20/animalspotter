@@ -18,14 +18,14 @@ class HomePage extends StatelessWidget {
   Widget _userUid() {
     return Text(user?.email ?? 'User email');
   }
-
+/*
   Widget _signOutButton() {
     return ElevatedButton(
         onPressed: signOut,
         child: const Text('Sign Out'),
     );
     return const Text('Firebase Auth');
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           _userUid(),
-          _signOutButton(),
+          //_signOutButton(),
         ],
       ),
       )

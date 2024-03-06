@@ -41,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
       });
     }
   }
+
+
 /*No volem el titol
   Widget _title() {
     return const Text('AnimalSpotter');
@@ -67,8 +69,8 @@ class _LoginPageState extends State<LoginPage> {
       onPressed:
         isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF9370DB)), // Cambia el color de fondo del botón a un púrpura más claro
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Cambia el color del texto del botón
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.withOpacity(0.2)),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       ),
       child: Text(isLogin ? 'Login' : 'Register'),
     );
@@ -82,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
         });
       },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF9370DB)), // Cambia el color de fondo del botón a un púrpura más claro
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.withOpacity(0.7)), // Cambia el color de fondo del botón a un púrpura más claro
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Cambia el color del texto del botón
       ),
       child: Text(isLogin ? 'Register instead' : 'Login intead'),
@@ -92,9 +94,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        /*appBar: AppBar( no volem appBAr, perque ens queda un espai lleig adalt
-          title: _title(),
-        ),*/
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
