@@ -1,4 +1,145 @@
+// MAIN ADAPTAT A UNA BAR ITEMS
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'listAnimals.dart';
+import 'package:animalspotter/widget_tree.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyCReF2peuEpRjRqZ7Hm1mWI9mETb5ppGWI",
+      authDomain: "animalspotter-d0d71.firebaseapp.com",
+      projectId: "animalspotter-d0d71",
+      storageBucket: "animalspotter-d0d71.appspot.com",
+      messagingSenderId: "802845800577",
+      appId: "1:802845800577:android:7aede1b5c851f1fa80f580",
+      measurementId: "", // Si no hay una medida en el archivo, déjalo vacío o elimínalo.
+    ),
+  );
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi App Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const WidgetTree(),
+      //home: const MainView(),
+    );
+  }
+}
+
+class MainView extends StatefulWidget {
+  const MainView({super.key});
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        //title: const Text('Main View'),
+      ),
+      body: _getBody(_currentIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getBody(int index) {
+    switch (index) {
+      case 0:
+        return const ListAnimals();
+    // Afegir aqui la vosta de listFavorites()
+    // case 1:
+    //   return const listFavorites();
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+}
+
+
+
+
+/*import 'package:flutter/material.dart';
+import 'listAnimals.dart';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi App Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const mainView(),
+    );
+  }
+}
+
+class mainView extends StatelessWidget {
+  const mainView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Main View'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ListAnimals()),
+            );
+          },
+          child: const Text('LIST ANIMALS'),
+        ),
+      ),
+    );
+  }
+}*/
+
+// BASE DEL PROJECTE INICIAL
+/*import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +152,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demofffdfd',
+      title: 'Flutter Demo provaaa',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -122,4 +263,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/

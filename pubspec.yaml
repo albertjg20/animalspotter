@@ -28,13 +28,20 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   flutter:
     sdk: flutter
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  http: ^1.1.2
+  camera: ^0.10.5+9
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  image_picker: ^1.0.7
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.6.0
+  #cloud_firestorm: ^4.14.0
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +59,20 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    # Afegim asset logo inici app
+    - lib/assets/animalspotter.png
+    # Asset imatge not Found
+    - lib/assets/notFound.png
+    #asset Oso panda
+    - lib/assets/Oso_Panda.jpg
+    #asset Logo
+    - lib/assets/logoApp.png
+    - lib/assets/fondoPantalla.jpg
+    - lib/assets/titolApp.png
+    - lib/assets/LogoDefinitiu.png
+    - lib/assets/List-Animals-6-3-2024 (1).png
+    - lib/assets/favortiosStar.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
